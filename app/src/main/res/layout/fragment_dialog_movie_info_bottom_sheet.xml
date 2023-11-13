@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_movie_info"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context=".ui.view.movies.MovieInfoBottomSheetDialogFragment">
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_sheet"
+        android:orientation="vertical"
+        android:elevation="@dimen/dp_1"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dp_24">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_movie_title"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:text="Joker"
+                android:textSize="@dimen/sp_26"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_movie_release"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:text="Joker"
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold"
+                android:textColor="@color/gray_300"
+                app:layout_constraintTop_toBottomOf="@id/mt_movie_title"
+                app:layout_constraintBottom_toTopOf="@id/mt_movie_overview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_movie_overview"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:text="This is the movie descriptsionidfhaskdfhawsiodhasiodhioasdhasiodhasiodhasiodhasiohdioashdioashdio"
+                android:textSize="@dimen/sp_14"
+                android:layout_marginVertical="@dimen/dp_16"
+                app:layout_constraintTop_toBottomOf="@id/mt_movie_release"
+                app:layout_constraintBottom_toTopOf="@id/btn_close"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_close"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:text="Cerrar"
+                android:textColor="@color/green_dark_app"
+                android:backgroundTint="@color/green_app"
+                android:layout_marginVertical="@dimen/dp_8"
+                app:layout_constraintTop_toBottomOf="@id/mt_movie_overview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cl_score"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/btn_close"
+                app:layout_constraintStart_toEndOf="@id/btn_close"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/btn_close">
+
+                <ProgressBar
+                    android:id="@+id/progress_score"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:indeterminate="false"
+                    android:progressDrawable="@drawable/circle_progress"
+                    android:background="@drawable/circle_progress_background"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:max="10"
+                    android:progress="7"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <TextView
+                    android:id="@+id/circle_consume_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="7"
+                    android:textStyle="bold"
+                    android:textColor="@color/green_dark_app"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="@id/progress_score"
+                    app:layout_constraintStart_toStartOf="@id/progress_score"
+                    app:layout_constraintEnd_toEndOf="@id/progress_score"
+                    app:layout_constraintBottom_toBottomOf="@id/progress_score"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

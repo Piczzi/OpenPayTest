@@ -11,30 +11,90 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/to_movieReviewFragmentDialog"
-            app:destination="@id/movieReviewFragmentDialog" >
+            android:id="@+id/to_bottomSheetDialogInfoMovie"
+            app:destination="@id/movieInfoBottomSheetDialog" >
 
             <argument
-                android:name="review"
+                android:name="title"
+                app:argType="string" />
+
+            <argument
+                android:name="release_date"
+                app:argType="string" />
+
+            <argument
+                android:name="overview"
+                app:argType="string" />
+
+            <argument
+                android:name="score"
+                app:argType="float" />
+
+            <argument
+                android:name="poster_path"
                 app:argType="string" />
 
         </action>
     </fragment>
-    <dialog
-        android:id="@+id/movieReviewFragmentDialog"
-        android:name="com.example.openpaytest.ui.view.profile.MovieReviewFragmentDialog"
-        android:label="fragment_dialog_movie_review"
-        tools:layout="@layout/fragment_dialog_movie_review" >
-
-        <argument
-            android:name="review"
-            app:argType="string" />
-
-    </dialog>
 
     <fragment
         android:id="@+id/nav_movies"
         android:name="com.example.openpaytest.ui.view.movies.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies" >
+
+        <action
+            android:id="@+id/to_bottomSheetDialogInfoMovie"
+            app:destination="@id/movieInfoBottomSheetDialog" >
+
+            <argument
+                android:name="title"
+                app:argType="string" />
+
+            <argument
+                android:name="release_date"
+                app:argType="string" />
+
+            <argument
+                android:name="overview"
+                app:argType="string" />
+
+            <argument
+                android:name="score"
+                app:argType="float" />
+
+            <argument
+                android:name="poster_path"
+                app:argType="string" />
+
+        </action>
+
+    </fragment>
+    <dialog
+        android:id="@+id/movieInfoBottomSheetDialog"
+        android:name="com.example.openpaytest.ui.view.movies.MovieInfoBottomSheetDialogFragment"
+        android:label="fragment_dialog_movie_info_bottom_sheet"
+        tools:layout="@layout/fragment_dialog_movie_info_bottom_sheet" >
+
+        <argument
+            android:name="title"
+            app:argType="string" />
+
+        <argument
+            android:name="release_date"
+            app:argType="string" />
+
+        <argument
+            android:name="overview"
+            app:argType="string" />
+
+        <argument
+            android:name="score"
+            app:argType="float" />
+
+        <argument
+            android:name="poster_path"
+            app:argType="string" />
+
+    </dialog>
 </navigation>

@@ -17,4 +17,6 @@ data class UserMovies(
     val title: String? = "No disponible",
     val review: String? = "No disponible",
     val posterPath: String? = "No disponible",
+    val releaseDate: String? = "No disponible",
+    val score: Double? = 0.0
 )

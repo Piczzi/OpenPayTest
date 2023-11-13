@@ -25,9 +25,11 @@ class GetPersonsUseCase @Inject constructor(
                                 responseBody.results.find { it.id == detailPerson.id }?.knownFor?.map { movie ->
                                     UserMovies(
                                         id = movie.id.toString(),
-                                        title = movie.title.orEmpty(),
-                                        review = movie.overview.orEmpty(),
-                                        posterPath = movie.posterPath.orEmpty(),
+                                        title = MethodsHandler.validateEmptyField(movie.title),
+                                        review = MethodsHandler.validateEmptyField(movie.overview),
+                                        posterPath = MethodsHandler.validateEmptyField(movie.posterPath),
+                                        releaseDate = MethodsHandler.validateEmptyField(movie.releaseDate),
+                                        score = movie.voteAverage,
                                     )
                                 }.orEmpty()
 

@@ -15,4 +15,5 @@
     <color name="yellow_sun">#FFEB3B</color>
     <color name="grey_unselect">#939393</color>
     <color name="green_selected">#318BEB1B</color>
+    <color name="white_menu">#F9F9F9</color>
 </resources>

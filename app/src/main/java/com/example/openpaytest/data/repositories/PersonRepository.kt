@@ -8,7 +8,6 @@ import javax.inject.Inject
 
 class PersonRepository @Inject constructor(private val api: OpenPayApiClient) {
 
-    //suspend fun getPlaceCategories(): Response<PlaceCategoriesModelResp>? = api.getPlaceCategories()
     suspend fun read(): Response<PopularPersonsDTO>? = api.getPopularPersons()
 
     suspend fun readDetailPerson(personId: String): Response<DetailPersonDTO>? = api.getDetailPerson(personId)

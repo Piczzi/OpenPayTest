@@ -1,4 +1,4 @@
-package com.example.openpaytest.ui.view.profile.adapter
+package com.example.openpaytest.ui.view.movies.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.openpaytest.data.model.local.UserMovies
-import com.example.openpaytest.databinding.AdpActorMoviesBinding
+import com.example.openpaytest.databinding.AdpLargeMoviesBinding
+import com.example.openpaytest.ui.view.movies.adapter.AdpLargeMovies.ViewHolder
 import com.example.openpaytest.utils.Constants
 import com.example.openpaytest.utils.MethodsHandler
 
-class AdpActorMovies : RecyclerView.Adapter<AdpActorMovies.ViewHolder>() {
+class AdpLargeMovies : RecyclerView.Adapter<ViewHolder>() {
 
     private var movieList: List<UserMovies> = listOf()
 
@@ -18,7 +19,7 @@ class AdpActorMovies : RecyclerView.Adapter<AdpActorMovies.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = AdpActorMoviesBinding.inflate(inflater, parent, false)
+        val binding = AdpLargeMoviesBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }
 
@@ -29,7 +30,7 @@ class AdpActorMovies : RecyclerView.Adapter<AdpActorMovies.ViewHolder>() {
 
     override fun getItemCount() = movieList.size
 
-    class ViewHolder(private val binding: AdpActorMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: AdpLargeMoviesBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: UserMovies, onClickOption: ((UserMovies) -> Unit)?) {
             Glide.with(binding.ivMovie)
                 .load(Constants.URL_IMAGES + movie.posterPath)
@@ -37,6 +38,7 @@ class AdpActorMovies : RecyclerView.Adapter<AdpActorMovies.ViewHolder>() {
                 .into(binding.ivMovie)
 
             binding.mtMovieTitle.text = MethodsHandler.validateEmptyField(movie.title)
+            binding.mtMovieRelease.text = MethodsHandler.validateEmptyField(movie.releaseDate)
             binding.cvMovie.setOnClickListener { onClickOption?.invoke(movie) }
         }
     }

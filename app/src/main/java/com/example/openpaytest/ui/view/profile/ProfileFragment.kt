@@ -6,17 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.example.openpaytest.R
-import com.example.openpaytest.data.model.local.UserMovies
 import com.example.openpaytest.databinding.FragmentProfileBinding
-import com.example.openpaytest.ui.view.profile.adapter.AdpActorMovies
+import com.example.openpaytest.ui.view.movies.MoviesFragmentDirections
+import com.example.openpaytest.ui.view.movies.adapter.AdpLargeMovies
 import com.example.openpaytest.utils.Constants
+import com.example.openpaytest.utils.MethodsHandler
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +24,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModels()
     private var isBiographyVisible = false
-    private val adpActorMovies = AdpActorMovies()
+    private val adpLargeMovies = AdpLargeMovies()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +37,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val linearLayoutManager: LinearLayoutManager = LinearLayoutManager(requireContext())
+        val linearLayoutManager = LinearLayoutManager(requireContext())
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         binding.rvMoviesActor.layoutManager = linearLayoutManager
         binding.rvMoviesActor.setHasFixedSize(true)
@@ -63,8 +62,8 @@ class ProfileFragment : Fragment() {
             mtBirthPlaceValue.text = popularPerson.birthPlace
             mtBiographyValue.text = popularPerson.biography
 
-            adpActorMovies.setList(popularPerson.movies)
-            rvMoviesActor.adapter = adpActorMovies
+            adpLargeMovies.setList(popularPerson.movies)
+            rvMoviesActor.adapter = adpLargeMovies
         }
     }
 
@@ -76,10 +75,14 @@ class ProfileFragment : Fragment() {
                 if (isBiographyVisible) "Ocultar biografía" else "Ver biografía"
         }
 
-        adpActorMovies.onClickOption = { userMovie ->
+        adpLargeMovies.onClickOption = { userMovie ->
             findNavController().navigate(
-                ProfileFragmentDirections.toMovieReviewFragmentDialog(
-                    if (userMovie.review.isNullOrBlank()) "Review no disponible." else userMovie.review
+                MoviesFragmentDirections.toBottomSheetDialogInfoMovie(
+                    title = MethodsHandler.validateEmptyField(userMovie.title),
+                    releaseDate = MethodsHandler.validateEmptyField(userMovie.releaseDate),
+                    overview = MethodsHandler.validateEmptyField(userMovie.review),
+                    score = userMovie.score?.toFloat() ?: 0.0f,
+                    posterPath = MethodsHandler.validateEmptyField(userMovie.posterPath),
                 )
             )
         }
