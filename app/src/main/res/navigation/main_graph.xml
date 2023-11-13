@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.openpaytest.ui.view.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/to_movieReviewFragmentDialog"
+            app:destination="@id/movieReviewFragmentDialog" >
+
+            <argument
+                android:name="review"
+                app:argType="string" />
+
+        </action>
+    </fragment>
+    <dialog
+        android:id="@+id/movieReviewFragmentDialog"
+        android:name="com.example.openpaytest.ui.view.profile.MovieReviewFragmentDialog"
+        android:label="fragment_dialog_movie_review"
+        tools:layout="@layout/fragment_dialog_movie_review" >
+
+        <argument
+            android:name="review"
+            app:argType="string" />
+
+    </dialog>
+</navigation>

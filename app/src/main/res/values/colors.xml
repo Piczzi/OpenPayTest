@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="gray_300">#A8A7A7</color>
+    <color name="dark_grey_blue">#384967</color>
+    <color name="faded_blue">#6986BD</color>
+    <color name="light_periwinkle">#dbe3f3</color>
+    <color name="deep_turquoise">#00677f</color>
+    <color name="transparent">#0000</color>
 </resources>

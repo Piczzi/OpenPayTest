@@ -18,7 +18,7 @@ class ProfileViewModel @Inject constructor(
 ): ViewModel() {
 
     private val _popularPerson = MutableLiveData<DetailPersonViewData>()
-    private val popularPerson: LiveData<DetailPersonViewData> = _popularPerson
+    val popularPerson: LiveData<DetailPersonViewData> = _popularPerson
 
     fun getMostPopularPerson() = viewModelScope.launch(Dispatchers.IO) {
         personsUseCase()?.let { _popularPerson.postValue(it) } ?: run { showTemporallyError() }

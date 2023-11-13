@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.view.profile.ProfileFragment">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_greeting_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Hola, Saúl!"
+                android:textSize="22sp"
+                android:maxLength="25"
+                android:layout_margin="24dp"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/iv_profile_picture"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_profile_picture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@color/cardview_dark_background"
+                style="@style/RoundedImageView"
+                android:layout_margin="16dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toBottomOf="@id/mt_greeting_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_popularity_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Popularidad"
+                android:textSize="14sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/iv_profile_picture"
+                app:layout_constraintBottom_toTopOf="@id/mt_popularity_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_popularity_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="220.449"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/mt_popularity_label"
+                app:layout_constraintBottom_toTopOf="@id/mt_birthday_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_birthday_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Nacimiento"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/mt_popularity_value"
+                app:layout_constraintBottom_toTopOf="@id/mt_birthday_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_birthday_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="1997-11-23"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/mt_birthday_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_deathday_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Muerte"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/mt_birthday_value"
+                app:layout_constraintBottom_toTopOf="@id/mt_deathday_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_deathday_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="2090-11-23"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/mt_deathday_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_birth_place_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Lugar de nacimiento"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/mt_deathday_value"
+                app:layout_constraintBottom_toTopOf="@id/mt_birth_place_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_birth_place_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="México"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/mt_birth_place_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_see_biography_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Ver biografía"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/mt_birth_place_value"
+                app:layout_constraintBottom_toTopOf="@id/cl_additional_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_additional_info"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="@color/gray_300"
+                app:layout_constraintTop_toBottomOf="@id/mt_see_biography_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/mt_biography_value"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="México adjkhasjkdhasjkdhasjkdhasjkdhasjkdhasjkdhasjkdhasjkdhjkasdhjkasdhasjkdhjkasdhasjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjksjk"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_margin="16dp"
+                    android:gravity="center"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_movies_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Peliculas"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/cl_additional_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_movies_actor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/mt_movies_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/mt_spacer" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_spacer"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Peliculas"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/rv_movies_actor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,4 +6,15 @@
     </style>
 
     <style name="Theme.OpenPayTest" parent="Base.Theme.OpenPayTest" />
+
+    <style name="RoundedImageView" parent="">
+        <item name="shapeAppearance">@style/RoundedShapeAppearance</item>
+    </style>
+
+    <style name="RoundedShapeAppearance" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
 </resources>

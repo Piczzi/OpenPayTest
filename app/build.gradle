@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 def localPropertiesFile = rootProject.file("local.properties")
@@ -27,8 +28,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "MOVIE_API_KEY", "\"${localProperties['tmdbApiKey']}\"")
-        buildConfigField("String", "MOVIE_BASE_URL", "\"${localProperties['baseUrl']}\"")
         buildConfigField "String", "MOVIE_API_KEY", "\"${localProperties['tmdbApiKey']}\""
         buildConfigField "String", "MOVIE_BASE_URL", "\"${localProperties['baseUrl']}\""
     }
@@ -68,8 +67,8 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.8.0"
 
     // NavigationComponent //
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation.navigation-ui-ktx:2.7.5")
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.5'
 
     // Dagger Hilt //
     implementation "com.google.dagger:hilt-android:2.46"
@@ -93,6 +92,9 @@ dependencies {
     // OkHTtp //
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+    // Glide //
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
 }
 
 kapt {
