@@ -1,10 +1,18 @@
 package com.example.openpaytest.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.openpaytest.BuildConfig
+import com.example.openpaytest.data.datasources.local.DBDetailPersonDataDao
+import com.example.openpaytest.data.datasources.local.DBMostRatedMoviesDataDao
+import com.example.openpaytest.data.datasources.local.DBPopularMoviesDataDao
+import com.example.openpaytest.data.datasources.local.DBUpcomingMoviesDataDao
+import com.example.openpaytest.data.datasources.local.OpenPayDatabase
 import com.example.openpaytest.data.datasources.remote.OpenPayApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -47,5 +55,33 @@ object NetworkModule {
     fun provideConsumeApiClient(retrofit: Retrofit): OpenPayApiClient {
         return retrofit.create(OpenPayApiClient::class.java)
     }
+
+    @Volatile
+    private var databaseInstance: OpenPayDatabase? = null
+
+    @Provides
+    fun provideDataBase(@ApplicationContext context: Context): OpenPayDatabase =
+        databaseInstance ?: synchronized(this) {
+            Room.databaseBuilder(context, OpenPayDatabase::class.java, "OpenPayRoomDataBase")
+                .fallbackToDestructiveMigration()
+                .build()
+                .also { databaseInstance = it }
+        }
+
+    @Singleton
+    @Provides
+    fun providePersonDetailViewDataDao(db: OpenPayDatabase): DBDetailPersonDataDao = db.personDetailDataDao()
+
+    @Singleton
+    @Provides
+    fun providePopularMoviesViewDataDao(db: OpenPayDatabase): DBPopularMoviesDataDao = db.popularMoviesDataDao()
+
+    @Singleton
+    @Provides
+    fun provideMostRatedMoviesViewDataDao(db: OpenPayDatabase): DBMostRatedMoviesDataDao = db.mostRatedMoviesDataDao()
+
+    @Singleton
+    @Provides
+    fun provideUpcomingMoviesViewDataDao(db: OpenPayDatabase): DBUpcomingMoviesDataDao = db.upcomingMoviesDataDao()
 
 }

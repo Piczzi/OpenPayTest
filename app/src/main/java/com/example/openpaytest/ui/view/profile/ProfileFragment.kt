@@ -42,7 +42,7 @@ class ProfileFragment : Fragment() {
         binding.rvMoviesActor.layoutManager = linearLayoutManager
         binding.rvMoviesActor.setHasFixedSize(true)
 
-        viewModel.getMostPopularPerson()
+        viewModel.getMostPopularPerson(MethodsHandler.isInternetAvailable(requireContext()))
         setUpObservers()
         setUpListeners()
     }

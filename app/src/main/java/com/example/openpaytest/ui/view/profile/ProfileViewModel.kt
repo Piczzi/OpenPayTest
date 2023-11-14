@@ -20,8 +20,8 @@ class ProfileViewModel @Inject constructor(
     private val _popularPerson = MutableLiveData<DetailPersonViewData>()
     val popularPerson: LiveData<DetailPersonViewData> = _popularPerson
 
-    fun getMostPopularPerson() = viewModelScope.launch(Dispatchers.IO) {
-        personsUseCase()?.let { _popularPerson.postValue(it) } ?: run { showTemporallyError() }
+    fun getMostPopularPerson(weHaveInternetConection: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        personsUseCase.invoke(weHaveInternetConection)?.let { _popularPerson.postValue(it) } ?: run { showTemporallyError() }
     }
 
     private fun showTemporallyError() {

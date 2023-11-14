@@ -1,6 +1,5 @@
 package com.example.openpaytest.ui.view.movies
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,20 +25,23 @@ class MoviesViewModel @Inject constructor(
     private val _upcomingMovies = MutableLiveData<List<UserMovies>>()
     val upcomingMovies: LiveData<List<UserMovies>> = _upcomingMovies
 
-    fun getMostPopularMovies() = viewModelScope.launch(Dispatchers.IO) {
-        moviesRepository.readPopularMovies()?.let { _popularMovies.postValue(it) } ?: run { showTemporallyError() }
+    private val _showError = MutableLiveData<String>("")
+    val showError: LiveData<String> = _showError
+
+    fun getMostPopularMovies(weHaveInternetConection: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        moviesRepository.readPopularMovies(weHaveInternetConection)?.let { _popularMovies.postValue(it) } ?: run { showTemporallyError() }
     }
 
-    fun getBestRatedMovies() = viewModelScope.launch(Dispatchers.IO) {
-        moviesRepository.readBestRatedMovies()?.let { _bestRatedMovies.postValue(it) } ?: run { showTemporallyError() }
+    fun getBestRatedMovies(weHaveInternetConection: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        moviesRepository.readBestRatedMovies(weHaveInternetConection)?.let { _bestRatedMovies.postValue(it) } ?: run { showTemporallyError() }
     }
 
-    fun getUpcomingMovies() = viewModelScope.launch(Dispatchers.IO) {
-        moviesRepository.readUpcomingMovies()?.let { _upcomingMovies.postValue(it) } ?: run { showTemporallyError() }
+    fun getUpcomingMovies(weHaveInternetConection: Boolean) = viewModelScope.launch(Dispatchers.IO) {
+        moviesRepository.readUpcomingMovies(weHaveInternetConection)?.let { _upcomingMovies.postValue(it) } ?: run { showTemporallyError() }
     }
 
     private fun showTemporallyError() {
-        Log.i("SMM_DEBUG", "Algo salió nuloooo")
+        _showError.postValue("Algo salió mal, revisa tu conexión a internet e intenta más tarde.")
     }
 
 }

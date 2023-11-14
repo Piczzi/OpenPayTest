@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.openpaytest.R
 import com.example.openpaytest.data.model.local.UserMovies
 import com.example.openpaytest.databinding.AdpLargeMoviesBinding
 import com.example.openpaytest.ui.view.movies.adapter.AdpLargeMovies.ViewHolder
@@ -35,6 +36,7 @@ class AdpLargeMovies : RecyclerView.Adapter<ViewHolder>() {
             Glide.with(binding.ivMovie)
                 .load(Constants.URL_IMAGES + movie.posterPath)
                 .centerCrop()
+                .placeholder(R.drawable.ic_lost_signal)
                 .into(binding.ivMovie)
 
             binding.mtMovieTitle.text = MethodsHandler.validateEmptyField(movie.title)

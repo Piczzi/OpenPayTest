@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,9 +38,9 @@ class MoviesFragment : Fragment() {
 
         setUpRecyclers()
 
-        viewModel.getMostPopularMovies()
-        viewModel.getBestRatedMovies()
-        viewModel.getUpcomingMovies()
+        viewModel.getMostPopularMovies(MethodsHandler.isInternetAvailable(requireContext()))
+        viewModel.getBestRatedMovies(MethodsHandler.isInternetAvailable(requireContext()))
+        viewModel.getUpcomingMovies(MethodsHandler.isInternetAvailable(requireContext()))
 
         setUpObservers()
         setUpListeners()
@@ -62,16 +63,23 @@ class MoviesFragment : Fragment() {
 
     private fun setUpObservers() = with(binding) {
         viewModel.popularMovies.observe(viewLifecycleOwner) { popularMovies ->
+            if (popularMovies.isNullOrEmpty()) return@observe
             adpPopularMovies.setList(popularMovies)
             rvPopularMovies.adapter = adpPopularMovies
         }
         viewModel.bestRatedMovies.observe(viewLifecycleOwner) { bestRatedMovies ->
+            if (bestRatedMovies.isNullOrEmpty()) return@observe
             adpBestRatedMovies.setList(bestRatedMovies)
             rvBestRatedMovies.adapter = adpBestRatedMovies
         }
         viewModel.upcomingMovies.observe(viewLifecycleOwner) { upcomingMovies ->
+            if (upcomingMovies.isNullOrEmpty()) return@observe
             adpUpcomingMovies.setList(upcomingMovies)
             rvUpcomingMovies.adapter = adpUpcomingMovies
+        }
+        viewModel.showError.observe(viewLifecycleOwner) { errorMessage ->
+            if (errorMessage.isBlank()) return@observe
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
         }
     }
 
