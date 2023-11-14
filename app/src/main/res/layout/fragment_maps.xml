@@ -16,7 +16,7 @@
         android:id="@+id/btn_other_pin"
         android:layout_width="@dimen/dp_0"
         android:layout_height="wrap_content"
-        android:text="Otro pin"
+        android:text="@string/search_pin"
         android:layout_margin="@dimen/dp_56"
         android:elevation="@dimen/dp_2"
         app:layout_constraintBottom_toBottomOf="parent"

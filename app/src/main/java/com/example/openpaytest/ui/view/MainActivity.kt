@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.openpaytest.R
+import com.example.openpaytest.R.string
 import com.example.openpaytest.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,17 +29,26 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_profile -> {
+                    binding.mtGreetingLabel.text = getString(string.toolbar_title_profile)
                     navController.navigate(R.id.nav_profile)
                     true
                 }
 
                 R.id.nav_movies -> {
+                    binding.mtGreetingLabel.text = getString(string.toolbar_title_movies)
                     navController.navigate(R.id.nav_movies)
                     true
                 }
 
                 R.id.nav_map -> {
+                    binding.mtGreetingLabel.text = getString(string.toolbar_title_map)
                     navController.navigate(R.id.nav_map)
+                    true
+                }
+
+                R.id.nav_pictures -> {
+                    binding.mtGreetingLabel.text = getString(string.toolbar_title_pictures)
+                    navController.navigate(R.id.nav_pictures)
                     true
                 }
 

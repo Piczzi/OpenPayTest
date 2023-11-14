@@ -4,16 +4,21 @@
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_profile_menu"
-        android:title="Perfil" />
+        android:title="" />
 
     <item
         android:id="@+id/nav_movies"
         android:icon="@drawable/ic_movie_menu"
-        android:title="Pelis" />
+        android:title="" />
 
     <item
         android:id="@+id/nav_map"
-        android:icon="@drawable/ic_profile_menu"
-        android:title="Mapa" />
+        android:icon="@drawable/ic_map_menu"
+        android:title="" />
+
+    <item
+        android:id="@+id/nav_pictures"
+        android:icon="@drawable/ic_pictures_menu"
+        android:title="" />
 
 </menu>

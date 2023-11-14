@@ -104,4 +104,10 @@
         android:label="fragment_map"
         tools:layout="@layout/fragment_maps" />
 
+    <fragment
+        android:id="@+id/nav_pictures"
+        android:name="com.example.openpaytest.ui.view.pictures.FragmentPictures"
+        android:label="fragment_pictures"
+        tools:layout="@layout/fragment_pictures" />
+
 </navigation>

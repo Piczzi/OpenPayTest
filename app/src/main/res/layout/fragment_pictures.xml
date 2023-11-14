@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.view.pictures.FragmentPictures">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mt_pictures_picker_title"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:text="¡Almacena imagenes en Firebase!"
+        android:textSize="@dimen/sp_22"
+        android:textColor="@color/green_dark_app"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/dp_16"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_image_to_send"
+        android:layout_width="225dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="@dimen/dp_16"
+        android:src="@drawable/ic_lost_signal"
+        app:layout_constraintTop_toBottomOf="@id/mt_pictures_picker_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_choose_image"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_24"
+        android:text="Añadir imagen"
+        android:textColor="@color/green_dark_app"
+        android:backgroundTint="@color/green_app"
+        app:layout_constraintTop_toBottomOf="@id/iv_image_to_send"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_send_image"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:text="Enviar imagen"
+        android:backgroundTint="@color/green_dark_app"
+        android:textColor="@color/green_app"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        app:layout_constraintTop_toBottomOf="@id/btn_choose_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

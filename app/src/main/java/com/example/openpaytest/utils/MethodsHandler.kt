@@ -6,6 +6,8 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.UUID
 
 object MethodsHandler {
 
@@ -36,6 +38,10 @@ object MethodsHandler {
     fun Long.fromMillisToDateString(format: String = "yyyy-MM-dd"): String {
         val formatter = SimpleDateFormat(format)
         return formatter.format(this)
+    }
+
+    fun String.randomUUID(): String {
+        return this + UUID.randomUUID().toString().lowercase(Locale.getDefault()) + ".jpg"
     }
 
 }
