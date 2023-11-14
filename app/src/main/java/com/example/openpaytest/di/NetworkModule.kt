@@ -9,6 +9,7 @@ import com.example.openpaytest.data.datasources.local.DBPopularMoviesDataDao
 import com.example.openpaytest.data.datasources.local.DBUpcomingMoviesDataDao
 import com.example.openpaytest.data.datasources.local.OpenPayDatabase
 import com.example.openpaytest.data.datasources.remote.OpenPayApiClient
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -83,5 +84,11 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideUpcomingMoviesViewDataDao(db: OpenPayDatabase): DBUpcomingMoviesDataDao = db.upcomingMoviesDataDao()
+
+    @Provides
+    @Singleton
+    fun provideFirestore(): FirebaseFirestore {
+        return FirebaseFirestore.getInstance()
+    }
 
 }

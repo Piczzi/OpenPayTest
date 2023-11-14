@@ -1,16 +1,22 @@
 package com.example.openpaytest.ui.view.movies
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.openpaytest.R
 import com.example.openpaytest.databinding.FragmentMoviesBinding
+import com.example.openpaytest.ui.view.maps.MapsFragment
 import com.example.openpaytest.ui.view.movies.adapter.AdpLargeMovies
 import com.example.openpaytest.ui.view.movies.adapter.AdpSmallMovies
 import com.example.openpaytest.utils.MethodsHandler
@@ -44,6 +50,41 @@ class MoviesFragment : Fragment() {
 
         setUpObservers()
         setUpListeners()
+        enableLocation()
+    }
+
+    private fun isLocationPermissionGranted() =
+        ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+
+    private fun enableLocation() {
+        if (isLocationPermissionGranted()) {
+            Log.i("SMM_DEBUG", "Permisos concedidos.")
+        } else {
+            requestLocaltionPermission()
+        }
+    }
+
+    private fun requestLocaltionPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                requireActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        ) {
+            Toast.makeText(
+                requireContext(),
+                "Activa los permisos en ajustes",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                MapsFragment.REQ_CODE_LOCATION
+            )
+        }
     }
 
     private fun setUpRecyclers() = with(binding) {

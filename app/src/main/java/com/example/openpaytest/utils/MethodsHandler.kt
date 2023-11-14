@@ -1,9 +1,11 @@
 package com.example.openpaytest.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import java.text.SimpleDateFormat
 
 object MethodsHandler {
 
@@ -28,6 +30,12 @@ object MethodsHandler {
             val networkInfo = connectivityManager.activeNetworkInfo
             return networkInfo != null && networkInfo.isConnected
         }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    fun Long.fromMillisToDateString(format: String = "yyyy-MM-dd"): String {
+        val formatter = SimpleDateFormat(format)
+        return formatter.format(this)
     }
 
 }
