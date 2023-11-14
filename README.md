@@ -36,6 +36,9 @@ Se tienen que agregar las siguientes propieades en [local.properties] ya que sin
 - ![img_4.png](img_4.png)
 - ![img_5.png](img_5.png)
 
+- **Evidencia de guardado y uso en Firebase**
+- ![img_6.png](img_6.png)
+
 Todo este proyecto hace uso de:
 
 - [MVVM]
