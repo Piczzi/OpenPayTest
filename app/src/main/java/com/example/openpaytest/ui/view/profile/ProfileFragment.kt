@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.openpaytest.databinding.FragmentProfileBinding
+import com.example.openpaytest.ui.view.MainViewModel
 import com.example.openpaytest.ui.view.movies.MoviesFragmentDirections
 import com.example.openpaytest.ui.view.movies.adapter.AdpLargeMovies
 import com.example.openpaytest.utils.Constants
@@ -23,6 +25,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private var isBiographyVisible = false
     private val adpLargeMovies = AdpLargeMovies()
 
@@ -41,6 +44,8 @@ class ProfileFragment : Fragment() {
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
         binding.rvMoviesActor.layoutManager = linearLayoutManager
         binding.rvMoviesActor.setHasFixedSize(true)
+
+        mainViewModel.isLoading(true)
 
         viewModel.getMostPopularPerson(MethodsHandler.isInternetAvailable(requireContext()))
         setUpObservers()
@@ -64,6 +69,7 @@ class ProfileFragment : Fragment() {
 
             adpLargeMovies.setList(popularPerson.movies)
             rvMoviesActor.adapter = adpLargeMovies
+            mainViewModel.isLoading(false)
         }
     }
 

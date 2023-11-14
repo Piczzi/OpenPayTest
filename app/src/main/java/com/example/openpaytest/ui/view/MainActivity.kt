@@ -2,7 +2,9 @@ package com.example.openpaytest.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.openpaytest.R
@@ -57,6 +59,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.navView.selectedItemId = R.id.nav_movies
+
+        setUpObservers()
+    }
+
+    private fun setUpObservers() {
+        mainViewModel.isLoading.observe(this@MainActivity) { isLoading ->
+            binding.lottieLoading.isVisible = isLoading
+            if (isLoading) {
+                binding.lottieLoading.playAnimation()
+            } else {
+                binding.lottieLoading.pauseAnimation()
+            }
+        }
     }
 
 }

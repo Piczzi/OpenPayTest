@@ -9,9 +9,11 @@ import com.example.openpaytest.data.datasources.local.DBPopularMoviesDataDao
 import com.example.openpaytest.data.datasources.local.DBUpcomingMoviesDataDao
 import com.example.openpaytest.data.datasources.local.OpenPayDatabase
 import com.example.openpaytest.data.datasources.remote.OpenPayApiClient
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.storage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -95,8 +97,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideStorage(): StorageReference {
-        return FirebaseStorage.getInstance().reference
-    }
+    fun provideFirebaseStorage(): FirebaseStorage = Firebase.storage
+
+    @Provides
+    @Singleton
+    fun provideStorageReference(storage: FirebaseStorage): StorageReference =
+        storage.reference
 
 }

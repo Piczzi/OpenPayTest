@@ -82,6 +82,21 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/mt_upcoming_movies"
+                app:layout_constraintBottom_toTopOf="@id/mt_spacer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/mt_spacer"
+                android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="SPACER"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_margin="38dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/rv_upcoming_movies"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

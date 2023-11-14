@@ -23,4 +23,6 @@
     <string name="mexico_label">México</string>
     <string name="see_biography_label">Ver biografía</string>
     <string name="movies_label">Peliculas</string>
+    <string name="you_most_select_an_image_first">Debes seleccionar una imagen primero.</string>
+    <string name="imagenes_previamente_guardadas">Imágenes previamente guardadas:</string>
 </resources>

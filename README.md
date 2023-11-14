@@ -7,8 +7,7 @@ Esta aplicación se deriva de un examen técnico en donde se califica el hacer c
 
 
 
-
-- ## IMPORTANTE ##
+- ## ¡ I M P O R T A N T E ! ##
 Se tienen que agregar las siguientes propieades en [local.properties] ya que sino, no compilará el proyecto:
 - tmdbApiKey=c0147ffe65a77deaddf68d039cd2554c
 - baseUrl=https://api.themoviedb.org/3/
@@ -34,10 +33,10 @@ Se tienen que agregar las siguientes propieades en [local.properties] ya que sin
 
 - **Pantalla Cuatro (Fotos)** En esta pantalla se selecciona una de las imagenes que tiene nuestro dispositivo y la enviamos almacenar a la base de datos de Firebase.
 - ![img_4.png](img_4.png)
-- ![img_5.png](img_5.png)
 
 - **Evidencia de guardado y uso en Firebase**
 - ![img_6.png](img_6.png)
+- ![img_5.png](img_5.png)
 
 Todo este proyecto hace uso de:
 
@@ -63,7 +62,6 @@ Si bien, la mayor parte de la apliación fue hecha con las mejores prácticas qu
 
 ¿Qué se podría mejorar en una versión posterior?
 - El diseño en todas las pantallas.
-- Hacer el ajuste (es muy mínimo) para que la imagen en la pantalla cuatro se almacene de forma remota.
 - A pesar de haber bastantes separaciones con Dagger Hilt, creo que esto puede aumentar aún más.
 - Módularizar ciertos métodos repetitivos.
 - Hacer uso de Flows.

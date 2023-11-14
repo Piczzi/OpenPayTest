@@ -11,11 +11,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.openpaytest.R
 import com.example.openpaytest.databinding.FragmentMoviesBinding
+import com.example.openpaytest.ui.view.MainViewModel
 import com.example.openpaytest.ui.view.maps.MapsFragment
 import com.example.openpaytest.ui.view.movies.adapter.AdpLargeMovies
 import com.example.openpaytest.ui.view.movies.adapter.AdpSmallMovies
@@ -27,6 +29,7 @@ class MoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMoviesBinding
     private val viewModel: MoviesViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private val adpPopularMovies = AdpLargeMovies()
     private val adpBestRatedMovies = AdpSmallMovies()
     private val adpUpcomingMovies = AdpSmallMovies()
@@ -47,6 +50,8 @@ class MoviesFragment : Fragment() {
         viewModel.getMostPopularMovies(MethodsHandler.isInternetAvailable(requireContext()))
         viewModel.getBestRatedMovies(MethodsHandler.isInternetAvailable(requireContext()))
         viewModel.getUpcomingMovies(MethodsHandler.isInternetAvailable(requireContext()))
+
+        mainViewModel.isLoading(true)
 
         setUpObservers()
         setUpListeners()
@@ -117,10 +122,12 @@ class MoviesFragment : Fragment() {
             if (upcomingMovies.isNullOrEmpty()) return@observe
             adpUpcomingMovies.setList(upcomingMovies)
             rvUpcomingMovies.adapter = adpUpcomingMovies
+            mainViewModel.isLoading(false)
         }
         viewModel.showError.observe(viewLifecycleOwner) { errorMessage ->
             if (errorMessage.isBlank()) return@observe
             Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_LONG).show()
+            mainViewModel.isLoading(false)
         }
     }
 
